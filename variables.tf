@@ -1,7 +1,6 @@
 variable "region" {
-  type        = string
-  default     = "us-east-1"
-  description = "AWS region"
+  type    = string
+  default = "us-east-2"
 }
 
 variable "profile" {
@@ -16,7 +15,13 @@ variable "project_name" {
 
 variable "my_ip_cidr" {
   type        = string
-  description = "Your IP in CIDR form, e.g. 1.2.3.4/32"
+  description = "Your IP in CIDR, e.g. 1.2.3.4/32"
+}
+
+variable "enable_nat" {
+  type        = bool
+  default     = false
+  description = "Enable NAT GW for private app egress (NOT free-tier)."
 }
 
 variable "db_username" {
@@ -25,13 +30,42 @@ variable "db_username" {
 }
 
 variable "db_password" {
-  type        = string
-  description = "RDS password"
-  sensitive   = true
+  type      = string
+  sensitive = true
 }
 
-variable "enable_nat" {
-  type        = bool
-  default     = false
-  description = "Enables a NAT Gateway so private instances can reach the internet (NOT free tier)."
+# VPC/subnet CIDRs (edit if you like)
+variable "vpc_cidr" {
+  type    = string
+  default = "10.0.0.0/16"
+}
+
+variable "public_a_cidr" {
+  type    = string
+  default = "10.0.1.0/24"
+}
+
+variable "public_b_cidr" {
+  type    = string
+  default = "10.0.2.0/24"
+}
+
+variable "app_a_cidr" {
+  type    = string
+  default = "10.0.11.0/24"
+}
+
+variable "app_b_cidr" {
+  type    = string
+  default = "10.0.12.0/24"
+}
+
+variable "db_a_cidr" {
+  type    = string
+  default = "10.0.21.0/24"
+}
+
+variable "db_b_cidr" {
+  type    = string
+  default = "10.0.22.0/24"
 }

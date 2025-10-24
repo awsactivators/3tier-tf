@@ -1,11 +1,11 @@
 output "alb_public_dns" {
-  value = aws_lb.public_alb.dns_name
+  value = module.alb_public.lb_dns
 }
 
 output "alb_internal_dns" {
-  value = aws_lb.internal_alb.dns_name
+  value = module.alb_internal.lb_dns
 }
 
 output "rds_endpoint" {
-  value = aws_db_instance.mysql.address
+  value = module.rds.endpoint
 }
