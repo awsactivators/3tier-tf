@@ -111,3 +111,4 @@ module "rds" {
   vpc_security_group_ids = [module.security.db_sg_id]
   common_tags            = local.tags
 }
+
