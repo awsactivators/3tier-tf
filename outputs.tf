@@ -1,11 +1,11 @@
-output "alb_public_dns" {
-  value = module.alb_public.lb_dns
+output "ecr_repository_url" {
+  value = module.ecr.repository_url
 }
 
-output "alb_internal_dns" {
-  value = module.alb_internal.lb_dns
+output "alb_dns_name" {
+  value = module.ecs_fargate.alb_dns_name
 }
 
-output "rds_endpoint" {
-  value = module.rds.endpoint
+output "service_name" {
+  value = module.ecs_fargate.service_name
 }

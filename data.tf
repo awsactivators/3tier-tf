@@ -1,18 +1,16 @@
-data "aws_availability_zones" "available" {
-  state = "available"
+data "aws_caller_identity" "current" {}
+
+data "aws_region" "current" {}
+
+# Default VPC
+data "aws_vpc" "default" {
+  default = true
 }
 
-data "aws_ami" "al2" {
-  most_recent = true
-  owners      = ["amazon"]
-
+# Default subnets in two AZs
+data "aws_subnets" "default" {
   filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
-  }
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
+    name   = "vpc-id"
+    values = [data.aws_vpc.default.id]
   }
 }
